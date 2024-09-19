@@ -21,13 +21,13 @@ function generateUUID() {
 
 function getGigaChatToken() {
   var scope, secret;
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    secret = PropertiesService.getUserProperties().getProperty("px22MjrEcx3qjpcuMsEkNgTvxkpCzwMw"); 
-    scope = PropertiesService.getUserProperties().getProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    secret = PropertiesService.getUserProperties().getProperty("GigaChatClientSecret"); 
+    scope = PropertiesService.getUserProperties().getProperty("GigaChatClientScope");
   }
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    secret = PropertiesService.getDocumentProperties().getProperty("px22MjrEcx3qjpcuMsEkNgTvxkpCzwMw"); 
-    scope = PropertiesService.getDocumentProperties().getProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r");
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    secret = PropertiesService.getDocumentProperties().getProperty("GigaChatClientSecret"); 
+    scope = PropertiesService.getDocumentProperties().getProperty("GigaChatClientScope");
   }
   else {
     throw "getGigaChatToken exception";
@@ -49,11 +49,11 @@ function getGigaChatToken() {
   if (response.getResponseCode() == 200) {
     const data = JSON.parse(response);
     const token = data.access_token;
-    if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-      secret = PropertiesService.getUserProperties().setProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv", token);
+    if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+      secret = PropertiesService.getUserProperties().setProperty("GigaChatClientToken", token);
     }
-    else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-      secret = PropertiesService.getDocumentProperties().setProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv", token);
+    else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+      secret = PropertiesService.getDocumentProperties().setProperty("GigaChatClientToken", token);
     }
     return "Success";
   }
@@ -64,11 +64,11 @@ function getGigaChatToken() {
 
 function getGigaChatModels() {
   var token;
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    token = PropertiesService.getUserProperties().getProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    token = PropertiesService.getUserProperties().getProperty("GigaChatClientToken");
   }
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) { 
-    token = PropertiesService.getDocumentProperties().getProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv");
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) { 
+    token = PropertiesService.getDocumentProperties().getProperty("GigaChatClientToken");
   }
   else {
     throw "getGigaChatModels exception";
@@ -95,13 +95,13 @@ function getGigaChatModels() {
 
 function askGigaChat(template, ...args) {
   var token, model;
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    token = PropertiesService.getUserProperties().getProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv");
-    model = PropertiesService.getUserProperties().getProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    token = PropertiesService.getUserProperties().getProperty("GigaChatClientToken");
+    model = PropertiesService.getUserProperties().getProperty("GigaChatClientModel");
   }
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) { 
-    token = PropertiesService.getDocumentProperties().getProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv");
-    model = PropertiesService.getDocumentProperties().getProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv");
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) { 
+    token = PropertiesService.getDocumentProperties().getProperty("GigaChatClientToken");
+    model = PropertiesService.getDocumentProperties().getProperty("GigaChatClientModel");
   }
   else {
     throw "askGigaChat exception";
@@ -145,13 +145,13 @@ function askGigaChat(template, ...args) {
 
 function translateGigaChat(cell, into="русский") {
   var token, model;
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    token = PropertiesService.getUserProperties().getProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv");
-    model = PropertiesService.getUserProperties().getProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    token = PropertiesService.getUserProperties().getProperty("GigaChatClientToken");
+    model = PropertiesService.getUserProperties().getProperty("GigaChatClientModel");
   }
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    token = PropertiesService.getDocumentProperties().getProperty("bx4kQGdfTxr787HsEgDgch979zwXJMwv");
-    model = PropertiesService.getDocumentProperties().getProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv");
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    token = PropertiesService.getDocumentProperties().getProperty("GigaChatClientToken");
+    model = PropertiesService.getDocumentProperties().getProperty("GigaChatClientModel");
   }
   else {
     throw "translateGigaChat exception";
@@ -199,11 +199,11 @@ function makeGigaChatTrigger() {
 function authGigaChat() {
   var ui = SpreadsheetApp.getUi();
   var secret = ui.prompt("Авторизационные данные:").getResponseText();
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("px22MjrEcx3qjpcuMsEkNgTvxkpCzwMw", secret);
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientSecret", secret);
   } 
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getDocumentProperties().setProperty("px22MjrEcx3qjpcuMsEkNgTvxkpCzwMw", secret);
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getDocumentProperties().setProperty("GigaChatClientSecret", secret);
   }
   else {
     throw "authGigaChat exception";
@@ -215,19 +215,19 @@ function authGigaChat() {
 };
 
 function setUserProps() {
-  PropertiesService.getUserProperties().setProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu", 1);
+  PropertiesService.getUserProperties().setProperty("GigaChatClientProperties", 1);
 };
 
 function setDocumentProps() {
-  PropertiesService.getDocumentProperties().setProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu", 1);
+  PropertiesService.getDocumentProperties().setProperty("GigaChatClientProperties", 1);
 };
 
 function setPersScope() {
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r", "GIGACHAT_API_PERS");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientScope", "GIGACHAT_API_PERS");
   } 
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getDocumentProperties().setProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r", "GIGACHAT_API_PERS");
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getDocumentProperties().setProperty("GigaChatClientScope", "GIGACHAT_API_PERS");
   }
   else {
     throw "setPersScope exception";
@@ -235,11 +235,11 @@ function setPersScope() {
 };
 
 function setB2BScope() {
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r", "GIGACHAT_API_B2B");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientScope", "GIGACHAT_API_B2B");
   }
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getDocumentProperties().setProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r", "GIGACHAT_API_B2B");
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getDocumentProperties().setProperty("GigaChatClientScope", "GIGACHAT_API_B2B");
   }
   else {
     throw "setB2BScope exception";
@@ -247,11 +247,11 @@ function setB2BScope() {
 };
 
 function setCorpScope() {
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r", "GIGACHAT_API_CORP");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientScope", "GIGACHAT_API_CORP");
   }
-  else if (PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("FQ6LEHgYragvzZMuvr7m4AT5wvX5T78r", "GIGACHAT_API_CORP");
+  else if (PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientScope", "GIGACHAT_API_CORP");
   }
   else {
     throw "setCorpScope exception";
@@ -259,11 +259,11 @@ function setCorpScope() {
 };
 
 function setGigaChat() {
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv", "GigaChat");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientModel", "GigaChat");
   }
-  else if(PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getDocumentProperties().setProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv", "GigaChat");
+  else if(PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getDocumentProperties().setProperty("GigaChatClientModel", "GigaChat");
   }
   else {
     throw "setGigaChat exception";
@@ -271,11 +271,11 @@ function setGigaChat() {
 };
 
 function setGigaChatPlus() {
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv", "GigaChat-Plus");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientModel", "GigaChat-Plus");
   }
-  else if(PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getDocumentProperties().setProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv", "GigaChat-Plus");
+  else if(PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getDocumentProperties().setProperty("GigaChatClientModel", "GigaChat-Plus");
   }
   else {
     throw "setGigaChatPlus exception";
@@ -283,11 +283,11 @@ function setGigaChatPlus() {
 };
 
 function setGigaChatPro() {
-  if (PropertiesService.getUserProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getUserProperties().setProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv", "GigaChat-Pro");
+  if (PropertiesService.getUserProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getUserProperties().setProperty("GigaChatClientModel", "GigaChat-Pro");
   }
-  else if(PropertiesService.getDocumentProperties().getProperty("MteUVTbxPEfHfCph4BH7Lkzhu7ksQYCu")) {
-    PropertiesService.getDocumentProperties().setProperty("BLduEZTnWw3RuwPvn6ju5zJ5J7PrzfDv", "GigaChat-Pro");
+  else if(PropertiesService.getDocumentProperties().getProperty("GigaChatClientProperties")) {
+    PropertiesService.getDocumentProperties().setProperty("GigaChatClientModel", "GigaChat-Pro");
   }
   else {
     throw "setGigaChatPro exception";
